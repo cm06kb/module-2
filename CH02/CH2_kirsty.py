@@ -288,6 +288,11 @@ while True:
         
 
 
+""""QUESTIONS"""
+""" q1. ex 10 - not sure what it does?
+    q2. number versus int, seemed to make no difference....
+    q3: ...
+"""
 
 
 
