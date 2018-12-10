@@ -5,7 +5,7 @@ Created on Tue Nov 27 17:18:12 2018
 
 @author: Gebruiker
 """
-
+"""
 print("what's your name? ")
 name=input().title()
 print("Hello {}!".format(name))
@@ -16,7 +16,7 @@ if age>30:
     print("Wow your old! Well nice to meet you {0} who is {1}".format(name,age))
 else:
     print("You are soo young! Well nice to meet you {0} who is {1}".format(name,age))
-
+"""
 
 def print_hello_world():
     return "hello world!"
@@ -41,8 +41,18 @@ def saying_hello():
 
 
 """task 2_2"""
+a1="hello"
+b1="world"
+a2="love"
+b2="coding"
+
+
 def hello_world_2args(a,b):
     print("{} {}".format(a,b))
+a1="two"
+b1="args"
+a2="four"
+b2="args"
 
 def hello_world_4args(a,b, c, d):
     print("{} {} {} {}".format(a,b, c, d))

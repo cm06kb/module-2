@@ -11,18 +11,12 @@ CH3.saying_hello()
 
 """task 2_2"""
 
-a1="hello"
-b1="world"
-a2="love"
-b2="coding"
+
 
 CH3.hello_world_2args(a1, b1)
 CH3.hello_world_2args(a2, b2)
 
-a1="two"
-b1="args"
-a2="four"
-b2="args"
+
 
 CH3.hello_world_4args(a1, b1, a2, b2)
 
