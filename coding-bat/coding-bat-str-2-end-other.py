@@ -101,9 +101,76 @@ Created on Wed Dec  5 13:36:38 2018
 #print(sum13([1, 2, 13, 2, 3, 13, 1]))
 
 
-def sum67(nums):
-  
+#def remove_six_to_seven(nums):
+#    while 6 in nums:
+#        index_6 = nums.index(6)
+#        index_7 = (nums.index(7)+1)
+#        nums2 = (nums[index_6:index_7])
+#        for n in nums2:
+#            if n in nums:
+#                nums.remove(n)
+#        return nums
+#
+#def sum67(nums):
+#    while 6 in nums:
+#        remove_six_to_seven(nums)
+#
+#    sum=0
+#    for n in nums:
+#        sum += n
+#    return sum
+#
+#print(sum67([1, 2, 2, 6, 99, 99, 7]))
+#print(sum67([1, 1, 6, 7, 2]))
+#print(sum67([1, 2, 2]))
+#print(sum67([6, 7, 1, 6, 7, 7]))
 
-sum67([1, 2, 2, 6, 99, 99, 7])
+
+#def remove_six_to_seven(nums):
+#      index_6 = nums.index(6)
+#      index_7 = nums.index(7, index_6)
+#      i = index_6
+#      while i<=index_7:
+#          nums.remove(nums[index_6])
+#          i+=1
+#      if 6 in nums:
+#          remove_six_to_seven(nums)
+#      else:    
+#          return nums
+#      
+#
+#def sum67(nums): 
+#    sum = 0
+#    if 6 in nums:
+#        remove_six_to_seven(nums) 
+#        for n in nums:
+#            sum += n
+#        return sum
+#    else:
+#        for n in nums:
+#            sum += n
+#    return sum
+#
+#
+#
+#print(sum67([2, 7, 6, 2, 6, 7, 2, 7]))
+#print(sum67([1, 1, 6, 7, 2]))
+#print(sum67([6, 7, 1, 6, 7, 7]))
+
+
+"""Given an array of ints, return True if the array contains a 2 next to a 2 somewhere."""
+
+def has22(nums):
+    if 2 in nums:
+        num2 = nums[(nums.index(2))] 
+        num_infront_2 = nums[(nums.index(2)-1)]
+        num_after_2 = nums[(nums.index(2)+1)]
+        return num_infront_2 == num2  or num2 == num_after_2
+        
+print(has22([1, 2, 2])) 
+print(has22([1, 2, 1, 2])) 
+#print(has22([2, 1, 2]))
+
+
 
 
