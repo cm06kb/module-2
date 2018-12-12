@@ -13,16 +13,22 @@ Created on Tue Dec 11 13:53:21 2018
 """
 
 def dataBundlePurchase(truePasscode, balance):
-    return passwordCheck(truePasscode, balance)
+    count = 0
+    return passwordCheck(truePasscode, balance, count)
                 
 
-def passwordCheck(truePasscode, balance):
+def passwordCheck(truePasscode, balance, count):
+    
     userPassword_attempt = input("please enter your password: ")
     if userPassword_attempt == truePasscode:
         return transactionType(balance)
     else:
-        print("incorrect password")
-        return passwordCheck(truePasscode)
+        count += 1
+        if count<=3:
+            print("incorrect password, please try again.")
+            return passwordCheck(truePasscode, balance, count)
+        else:
+            print("You have entered an incorrect password three times, you are now locked out of your account. Please contact us.")
 
 def transactionType(balance):  
     user_transaction_type = input("type 1 to check credit or type 2 to purchase data: ")
