@@ -64,98 +64,57 @@ Created on Wed Dec 12 14:02:00 2018
 
 
 def how_many_bees(hive):
-    if hive==None:
+    if (not hive) or (len(hive) < 0):
         return 0
     else:
-        total_no_of_bees_in_column = scan_column(hive)
-        total_num_bee_in_rows = scan_row(hive)
-        return total_num_bee_in_rows + total_no_of_bees_in_column
-""" n is the row"""
-""" m is the column"""
-"""len(hive)-1 is the column height"""
-"""len(hive[0])-1 is the row length"""
+        new_hive = vertical_hive(hive)
+        total_h = scan_row(hive)
+        total_v = counting_rows(new_hive)
+        total = total_h + total_v
+        return total
+ 
+def vertical_hive(hive):
+    r = 0
+    new_hive = []
+    for char in hive[0]:
+        if r < len(hive[0]):
+            new_row = ''
+            for i in range(0, len(hive)):
+                new_row += hive[i][r]
+        new_hive.append(new_row)
+        r = r + 1
+    return new_hive
 
-def scan_column(hive):
-
-    column = 0
-    no_of_rows = (len(hive))
-    no_of_columns= (len(hive[0])-1) 
-    total_no_of_bees_in_column = 0
-#    while column<=((no_of_columns)):
-#        row = 0
-#        print(no_of_rows)
-#        while row+2<=(no_of_rows):
-#            print(row)
-#            if ((hive[row:row+3][column] == "bee") or (hive[row:row+3][column] == "eeb")) and (row<no_of_rows-3):
-#                 
-##            if (hive[row][column]=="b" and hive[row+1][column] == "e" and hive[row+2][column] =="e") or (hive[row][column]=="e" and hive[row+1][column] == "e" and hive[row+2][column] =="b"):
-#                total_no_of_bees_in_column = total_no_of_bees_in_column + 1
-#                row = row + 1
-#            else:
-#                row = row + 1
-#        column = column + 1
-    return number_of_bees 
-
+def counting_rows(hive):
+    bees = 0
+    for row in hive:
+        i = 0
+        for char in row:
+            if (row[i:i+3] == 'bee') or (row[i:i+3] == 'eeb'):
+                #if (row[i:i+3] == 'bee'): print(row, i, row[i:i+3])
+                #if (row[i:i+3] == 'eeb'): print(row, i, row[i:i+3])
+                bees = bees + 1
+            i = i + 1
+    return bees
 
 def scan_row(hive):
-    row = 0
-    no_of_columns = (len(hive[0])-1)
-    no_of_rows = (len(hive)) 
-    total_num_bee_in_rows = 0
-#    while row<=(no_of_rows):
-#        column = 0
-#        while column+2<=(no_of_columns):
-##            print(hive[row][column:column+3])
-##            if (hive[row][column:column+3] == "bee") or (hive[row][column:column+3] =="eeb"):
-#                
-#            if (hive[row][column]=="b" and hive[row][column+1] == "e" and hive[row][column+2] =="e") or (hive[row][column]=="e" and hive[row][column+1] == "e" and hive[row][column+2] =="b"):
-#                total_num_bee_in_rows = total_num_bee_in_rows + 1
-#                column = column + 1
-#            else:
-#               column = column + 1
-#        row = row + 1
-    return total_num_bee_in_rows     
-
-#print(how_many_bees([".b.e.ebebbee..ee.e", "b.ee.b.e.eebbee.e.", "e.bb.ee..eee.ebeb.", "eb.eee.beb.e..ebe.", "eee.eb..b.ebe..bee", ".ebe.ee.be.beee.b.", "bebb..eeeee..b.ee.", "..ee.eee.eb.ebbbe.", "eebeebe.e.b.ee...b", "ebee.eebbe...e..eb", "bee..e...bbeeeeb.e", "ee.bbeeeb..e..e.eb", "be.bee....eebeebe.", ".bee.eebbeebe...e.", "ee.ebe.b.eebee..b.", "eebeebebb.e..ee...", "eeb.eb.e.e..e.ebbe", "eb.e..eb.eeeebb..e"]))
-print(how_many_bees(["bee.bee", ".e..e..",".b..eeb"]))
-#print(how_many_bees(["beebee", "ee.e.e","eb.eeb"]))
+   row = 0
+   no_of_columns = (len(hive[0])-1)
+   no_of_rows = (len(hive)-1)
+   total_num_bee_in_rows = 0
+   while row<=(no_of_rows):
+       column = 0
+       while column+2<=(no_of_columns):
+           if (hive[row][column]=="b" and hive[row][column+1] == "e" and hive[row][column+2] =="e") or (hive[row][column]=="e" and hive[row][column+1] == "e" and hive[row][column+2] =="b"):
+               total_num_bee_in_rows = total_num_bee_in_rows + 1
+               column = column + 1
+           else:
+              column = column + 1
+       row = row + 1
+   return total_num_bee_in_rows
 
 
-"""column m is equal to row n"""
-#bee.bee
-#.e..e..
-#.b..eeb
-
-"""column m is less than row n, more rows than columns......"""
-
-#bebe..bee.e..beb.ee..be.eee
-#.bee.ee.ee.e..ee.bb.ee.ebbb
-#.b.e.b.ee.eeeeee..ebb.eb.be
-#..eee.b.b.ee..bebbeee.eb.ee
-#..ee..be...ebbeebe.eebeeeb.
-#eebeb..e.eeee.b.eb.b..ee.be
-#bebebe..eee.e..e...e.bbeebe
-#beee..eebeebbe.b.eeb...ee..
-#.e.be.ebbbee.eee....eeb.bee
-#bbeeeeeee.e.eb...b...ebee.b
-#eee.e.e.eebe.bbe.be.e.bb.e.
-#ebee..ebb.ee..ebe..eeb..eeb
-#bbeeeeeb....ee.ebbe...eeeb.
-#beee.e...ee.b.eb.eeeeeb.bb.
-#e.eebbe.eeb.e.b..e..eeebbe.
-#ebeee.beeeee..e..ebb..b.be.
-#eeb.e.ebe.eb..be..e.e.eebeb
-#beee.bbb..ebe...ee.beee.ee.
-#bebeb..ee.bb.ee....b.eeeeee
-#b.ee....eebb.ebebeb.eee..ee
-#e.eb.be.bee.ebee.e.b.e.eeb.
-#.e..eebb.ee.b..bee.eeb.beee
-#eeee..e.b.ee.ebb..ebe.be.be
-#.e.b.bb..eee.be.eeebe.eebe.
-#ee..bebe.ee.b..eeeb.beebe..
-#b.e.e.ee..ee.eebeb.b.ebbe.e
-#ebeb.e.eee.bbee...eee...ebb
-
+  
 
 
 
