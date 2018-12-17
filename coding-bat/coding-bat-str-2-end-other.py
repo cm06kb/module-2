@@ -160,17 +160,65 @@ Created on Wed Dec  5 13:36:38 2018
 
 """Given an array of ints, return True if the array contains a 2 next to a 2 somewhere."""
 
+#def has22(nums):
+#    if 2 in nums:
+#        if nums.index(2)==0:
+#            print(nums.index(2))
+#            return 2 == nums[1]
+#        elif nums.index(2)==(len(nums)-1):
+#             return 2 == (len(nums)-2)
+#        else:
+#            return nums[(nums.index(2)-1)] == 2  or 2 == nums[(nums.index(2)+1)]
+#    else:
+#        return False
+                
+#print(has22([1, 3, 2])) 
+#print(has22([1, 2, 2, 2])) 
+#print(has22([4, 2, 4, 2, 2, 5]))
+#print(has22([]))
+
+#def has22(nums):
+#    return 2 in nums
+#  
+#print(has22([1, 1, 1, 1])) 
+#print(has22([2, 2, 2]))
+
+#def has22(nums):
+#    for n in nums:
+#        if n==2:
+#            if nums.index(2)==0:
+#                print(nums.index(2))
+#                return 2 == nums[1]
+#            elif nums.index(2)==(len(nums)-1):
+#                 return 2 == (len(nums)-2)
+#            else:
+#                return nums[(nums.index(2)-1)] == 2  or 2 == nums[(nums.index(2)+1)]
+  
+
 def has22(nums):
-    if 2 in nums:
-        num2 = nums[(nums.index(2))] 
-        num_infront_2 = nums[(nums.index(2)-1)]
-        num_after_2 = nums[(nums.index(2)+1)]
-        return num_infront_2 == num2  or num2 == num_after_2
-        
-print(has22([1, 2, 2])) 
-print(has22([1, 2, 1, 2])) 
-#print(has22([2, 1, 2]))
+  count = 0
+  for n in range(len(nums)-1):
+      if len(nums)<1:
+          return False
+      elif nums[n]==2:
+          if n == 0:
+            if nums[1] ==2:
+              count += 1
+          elif n==(len(nums)-1) and  2 == nums[n-1]:
+                   count += 1
+          elif nums[n-1] == 2  or 2 == nums[n+1]:
+                count+=1
+          
+  if count>=1:
+    return True
+  else:
+    return False
+  
+    
 
-
-
-
+            
+print(has22([2, 2]))
+print(has22([1, 3, 2, 3,4,5,2,2]))
+    
+    
+    
