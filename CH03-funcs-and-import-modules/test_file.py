@@ -10,14 +10,8 @@ CH3.saying_hello()
 
 
 """task 2_2"""
-
-
-
 CH3.hello_world_2args(a1, b1)
 CH3.hello_world_2args(a2, b2)
-
-
-
 CH3.hello_world_4args(a1, b1, a2, b2)
 
 """task 3"""
