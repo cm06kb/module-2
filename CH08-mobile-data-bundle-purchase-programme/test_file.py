@@ -5,7 +5,7 @@ Created on Tue Dec 11 13:53:43 2018
 @author: Gebruiker
 """
 
-from simple_bundle_purchase1 import dataBundlePurchase
+from simple_bundle_purchase import dataBundlePurchase
 
 
 # Test call to programme:
