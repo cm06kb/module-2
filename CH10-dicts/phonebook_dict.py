@@ -5,7 +5,7 @@ Created on Wed Dec 19 12:05:20 2018
 @author: Gebruiker
 """
 
------------------------------CREATE OWN DICT TO SORT WITHIN CLASS-----------------------
+#----------------------------CREATE OWN DICT TO SORT WITHIN CLASS-----------------------
 
 """write a function that can generate a phonebook_dict containing four keys, each 
 key should have four values. Obtain values via user input."""

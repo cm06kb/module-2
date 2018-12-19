@@ -30,3 +30,6 @@ print(e)
 print(f)
 print(g)
 print(h)
+
+greeting = "hello world"
+print(greeting)
