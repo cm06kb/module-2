@@ -3,35 +3,35 @@
 
 def dataBundlePurchase(password, balance):
     """ 
-    starts the purchase of a data bundle.
-    Sets a counter, to check how many times user has entered password to 0. 
-    Then calls check password function
+        starts the purchase of a data bundle.
+        Sets a counter, to check how many times user has entered password to 0. 
+        Then calls check password function
     """
     user_attempts_at_password = 0
-    check_userpasswordpasswordCheck(password, balance, count)
+    check_userpasswordpasswordCheck(password, balance, user_attempts_at_password )
       
 
 def passwordCheck(password, balance, user_attempts_at_password):
     """
-
-   takes a user input of password and compares password passed 
-   from databundlePurchase function. If password correct calls transaction type
-   function. If incorrect increments the user_attempts_at_password counter 
+       takes a user input of password and compares password passed 
+       from databundlePurchase function. If password correct calls transaction type
+       function. If incorrect increments the user_attempts_at_password counter 
    """
     userPassword_attempt = input("  Please input your password: ")
     if userPassword_attempt == password:
         return transactionType(balance)
     else:
-        count += 1
-        if count<3:
+        user_attempts_at_password += 1
+        if user_attempts_at_password<3:
             print("incorrect password, please try again.")
             return passwordCheck(password, balance, user_attempts_at_password)
         else:
             print("You have entered an incorrect password three times, you are now locked out of your account. Please contact us for assistance")
 
 def transactionType(balance):  
-    """Takes in user input, checks if user wants to check credit or check balance,
-    calls the the next function based on user input.
+    """
+        Takes in user input, checks if user wants to check credit or check balance,
+        calls the the next function based on user input.
     """
     user_transaction_type = input("type 1 to check credit or type 2 to purchase data: ")
     if user_transaction_type == "1":
@@ -45,9 +45,10 @@ def transactionType(balance):
 # TRANSACTION TYPE 1 CALLED - CHECK BALANCE
 #-----------------------------------------------------------------------------        
 def checkBalance(balance):
-    """This func is called if user asked to check balance in transactiontype func.
-    This returns users balance, if in the negative, the user is given the option to
-    top up
+    """
+        This func is called if user asked to check balance in transactiontype func.
+        This returns users balance, if in the negative, the user is given the option to
+        top up
     """
     if balance>0:
         print("Your balance is £{}".format(balance))
@@ -57,10 +58,12 @@ def checkBalance(balance):
         return do_you_want_to_top_up(balance)
     
 def do_you_want_to_to_up(balance):
-    """ checks if user wants to top.
+    """ 
+        checks if user wants to top.
         If yes returns a function to top up balance.
         If no returns the transaction type function.
-    """"
+        
+    """
     does_user_want_to_top_up = input("would you like to top up? please type Y or N : ")
     does_user_want_to_top_up.lower()
     if does_user_want_to_top_up == "y" or does_user_want_to_top_up == "yes":
@@ -69,8 +72,9 @@ def do_you_want_to_to_up(balance):
         return transactionType(balance) 
 
 def top_up(balance):  
-      """asks user how much they want to top up.And updates the balance
-         Returns 
+      """
+          Asks user how much they want to top up.And updates the balance
+          
       """
       request_top_up = int(input("How much money would you like to add to your account?"))  
       balance = balance + request_top_up
@@ -87,11 +91,12 @@ def top_up(balance):
 #------------------------------------------------------------------------------
 
 def phoneNumberCheck(balance):
-    """Before user tops up they must enter their phone number correctly twice.
-    Ths function checks the numbers matcha and calls another function to check they
-    are valid telephone numbers. 
-    If number is valid function called to check they have enough credit already
-    to top up.
+    """
+        Before user tops up they must enter their phone number correctly twice.
+        Ths function checks the numbers matcha and calls another function to check they
+        are valid telephone numbers. 
+        If number is valid function called to check they have enough credit already
+        to top up.
     """
     userNumber_attempt1 = input("please enter your phone number: ")
     valid = is_a_uk_num(userNumber_attempt1)
