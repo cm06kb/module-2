@@ -109,8 +109,7 @@ dog007.bark()
 dog007.eat()
 dog007.detect()
 
-
------------------------------MY OWM EXAMPLE------------------------------------
+#----------------------------MY OWM EXAMPLE------------------------------------
 
 class School_members():
     def __init__(self, name, gender, age=0):

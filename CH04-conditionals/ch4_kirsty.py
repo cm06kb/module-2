@@ -4,14 +4,14 @@ Created on Tue Dec  4 13:58:58 2018
 
 @author: Gebruiker
 """
+#------------------------------------------------------------------------------
+#                    CHAPTER 4 - CONDITIONALS
+#------------------------------------------------------------------------------
 
-print("this" == 'this')
 
-print(3>=4)
-print(3>=2)
-print(5!=3)
-print(5!=3)
-print(5!="some string")
+#------------------------------------------------------------------------------
+#                     TASK 3 IF STATEMENTS
+#------------------------------------------------------------------------------
 
 def are_they_a_teen():
     age = int(input("how old are you?"))
@@ -19,7 +19,12 @@ def are_they_a_teen():
     print("Are they a teen: " + str(is_a_teen))
 
 are_they_a_teen()
-#--------------------------TASK 3 and TASK 4-----------------------------------
+
+
+#------------------------------------------------------------------------------
+#                     TASK 4 ELSE STATEMENTS
+#------------------------------------------------------------------------------
+
 def num_between_1_and_10():
     number = int(input("Enter a number between 1 and 10: "))
     if number>10:
@@ -34,8 +39,9 @@ num_between_1_and_10()
 
 
 
-
-#--------------------------------TASK 5----------------------------------------
+#------------------------------------------------------------------------------
+#                     TASK 5 ELSE STATEMENTS
+#------------------------------------------------------------------------------
 def what_are_they():
     age = int(input("how old are you?"))
     if age<13:
@@ -49,41 +55,41 @@ def what_are_they():
 
 what_are_they()
 
-#----------------LEARN PYTHON HARDWAY--------------------------
-
-"""exercise 11"""
-print("How old are you?"),
-age = input() 
-print("How tall are you?"),
-height = input()
-print("How much do you weigh?"),
-weight = input() 
-print("So, you're %r old, %r tall and %r heavy." % (age, height, weight))
-
-""" Q: what is raw_input? Ans: returns user input as a string."""
-
-    
-"""exercise 30"""
-people = 30     
-cars = 40 
-buses = 15 
-if cars > people:        
-    print("We should take the cars.")     
-elif cars < people:
-    print("We should not take the cars.")
-else:
-    print("We can't decide.")   
-
-if buses > cars:      
-    print("That's too many buses.") 
-elif buses < cars: 
-    print("Maybe we could take the buses.") 
-else: 
-    print("We still can't decide.") 
-            
-if people > buses:     
-   print("Alright, let's just take the buses.")   
-else: 
-   print("Fine, let's stay home then.")
+##----------------LEARN PYTHON HARDWAY--------------------------
+#
+#"""exercise 11"""
+#print("How old are you?"),
+#age = input() 
+#print("How tall are you?"),
+#height = input()
+#print("How much do you weigh?"),
+#weight = input() 
+#print("So, you're %r old, %r tall and %r heavy." % (age, height, weight))
+#
+#""" Q: what is raw_input? Ans: returns user input as a string."""
+#
+#    
+#"""exercise 30"""
+#people = 30     
+#cars = 40 
+#buses = 15 
+#if cars > people:        
+#    print("We should take the cars.")     
+#elif cars < people:
+#    print("We should not take the cars.")
+#else:
+#    print("We can't decide.")   
+#
+#if buses > cars:      
+#    print("That's too many buses.") 
+#elif buses < cars: 
+#    print("Maybe we could take the buses.") 
+#else: 
+#    print("We still can't decide.") 
+#            
+#if people > buses:     
+#   print("Alright, let's just take the buses.")   
+#else: 
+#   print("Fine, let's stay home then.")
 
     

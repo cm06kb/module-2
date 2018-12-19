@@ -19,16 +19,16 @@ def dataBundlePurchase(truePasscode, balance):
 
 def passwordCheck(truePasscode, balance, count):
     
-    userPassword_attempt = input("  word: ")
+    userPassword_attempt = input("  Please input your password: ")
     if userPassword_attempt == truePasscode:
         return transactionType(balance)
     else:
         count += 1
-        if count<=3:
+        if count<3:
             print("incorrect password, please try again.")
             return passwordCheck(truePasscode, balance, count)
         else:
-            print("You have entered an incorrect password three times, you are now locked out of your account. Please contact us.")
+            print("You have entered an incorrect password three times, you are now locked out of your account. Please contact us for assistance")
 
 def transactionType(balance):  
     user_transaction_type = input("type 1 to check credit or type 2 to purchase data: ")
@@ -38,7 +38,7 @@ def transactionType(balance):
         return phoneNumberCheck(balance)
     else:
         print("option not possible, please try again")
-        return transactionType()
+        return transactionType(balance)
     
 def checkBalance(balance):
     if balance>0:
@@ -49,12 +49,30 @@ def checkBalance(balance):
     
 def phoneNumberCheck(balance):
     userNumber_attempt1 = input("please enter your phone number: ")
-    userNumber_attempt2 = input("please enter your phone number: ")
-    if userNumber_attempt1 == userNumber_attempt2:
-        return credit_requested_less_than_balance(balance)
+    valid = is_a_uk_num(userNumber_attempt1)
+    if valid==True:
+        userNumber_attempt2 = input("please re-enter your phone number: ")
+        if userNumber_attempt1 == userNumber_attempt2:
+            return credit_requested_less_than_balance(balance)
+        else:
+            print("Incorrect phone number")
+            return phoneNumberCheck(balance)
     else:
         print("Incorrect phone number")
-        return phoneNumberCheck()
+        return phoneNumberCheck(balance)
+
+def is_a_uk_num(userNumber_attempt1):
+    if len(userNumber_attempt1) == 11 and (userNumber_attempt1[0]==0):
+        return True
+    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[4]== "-" or userNumber_attempt1[4]== " " ) and (userNumber_attempt1[8]=="-" or userNumber_attempt1[8]=="-"):
+        return True
+    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[3]== "-" or userNumber_attempt1[3]== " " ) and (userNumber_attempt1[9]=="-" or userNumber_attempt1[9]=="-"):
+        return True
+    elif (len(userNumber_attempt1) == 15) and (userNumber_attempt1[0]=="(") and  (userNumber_attempt1[4]==")" or userNumber_attempt1[5]==")" or userNumber_attempt1[6]==")" or userNumber_attempt1[9]==")"):
+        return True
+    else:
+        return False
+    
         
 def credit_requested_less_than_balance(balance):
     credit_requested = int(input("please enter the amount of credit  you would like to purchase, this must be a mutiple of 5  :"))     
