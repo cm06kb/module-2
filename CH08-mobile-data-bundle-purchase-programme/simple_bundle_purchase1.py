@@ -1,5 +1,4 @@
 
-import re
 
 def dataBundlePurchase(password, balance):
     """ 
@@ -81,7 +80,7 @@ def top_up(balance):
       """
       request_top_up = int(input("How much money would you like to add to your account?"))  
       balance = balance + request_top_up
-      print("your new balance is £{}. You can now purchase credit.".format(balance))
+      print("your new balance is £{:.2f}. You can now purchase credit.".format(balance))
       return transactionType(balance)
     
 #------------------------------------------------------------------------------
@@ -131,12 +130,12 @@ def credit_requested_less_than_balance(balance):
         Checks if the user has enough funds to purchase credits.
         
     """
-    credit_requested = int(input("please enter the amount of credit  you would like to purchase, this must be a mutiple of 5  :"))     
+    credit_requested = int(input("please enter the amount of credit  you would like to purchase, this must be a mutiple of 5: "))     
     if balance>=credit_requested:
         return credit_mutiple_of_5(balance, credit_requested)
     else:
         print("You do not have enough sufficient funds to purchase £{} of credit.".format(credit_requested))
-        return do_you_want_to_to_up(balance)
+        return do_you_want_to_top_up(balance)
          
 def credit_mutiple_of_5(balance, credit_requested):
     """
@@ -145,7 +144,7 @@ def credit_mutiple_of_5(balance, credit_requested):
     """
     balance = balance - credit_requested
     if  credit_requested % 5==0:
-         return "You have now purchased £{} of credit, your balance is now £{}, please proceed to checkout".format(credit_requested, balance)
+         return "You have now purchased £{} of credit, your balance is now £{:.2f}, please proceed to checkout".format(credit_requested, balance)
     else:
         print("you may only purchase credit in bundles of 5")
         return credit_requested_less_than_balance(balance)
