@@ -1,11 +1,15 @@
-
-def dataBundlePurchase(truePasscode, balance):
-    count = 0
-    return passwordCheck(truePasscode, balance, count)
-                
-
-def passwordCheck(truePasscode, balance, count):
+def dataBundlePurchase(password, balance):
+    """sets counter user_attempts_at_password to 0. Calls check password function"""
+    user_attempts_at_password = 0
+    check_userpasswordpasswordCheck(password, balance, count)
     
+
+         
+
+def passwordCheck(password, balance, count):
+"""takes a user input of password and compares password passed 
+   from databundlePurchase function. If password correct calls transaction type
+   function. If incorrect increments the user_attempts_at_password counter """"
     userPassword_attempt = input("  Please input your password: ")
     if userPassword_attempt == truePasscode:
         return transactionType(balance)
@@ -13,11 +17,13 @@ def passwordCheck(truePasscode, balance, count):
         count += 1
         if count<3:
             print("incorrect password, please try again.")
-            return passwordCheck(truePasscode, balance, count)
+            return passwordCheck(password, balance, count)
         else:
             print("You have entered an incorrect password three times, you are now locked out of your account. Please contact us for assistance")
 
 def transactionType(balance):  
+"""Takes in user input, checks if user wants to check credit or check balance,
+calls the the next function based on user input."""
     user_transaction_type = input("type 1 to check credit or type 2 to purchase data: ")
     if user_transaction_type == "1":
         return checkBalance(balance)
@@ -28,12 +34,30 @@ def transactionType(balance):
         return transactionType(balance)
     
 def checkBalance(balance):
+"""This func is called if user asked to check balance in transactiontype func.
+    This returns users balance, if in the negative, the user is given the option to
+    top up"""
     if balance>0:
+        print("Your balance is £{}".format(balance))
         return "Your balance is £{}".format(balance)
     else:
         print("Insufficient credit, your balance is £{}".format(balance))
-        return do_you_want_to_to_up(balance)
-    
+        return do_you_want_to_top_up(balance)
+#------------------------------------------------------------------------------
+#
+#------------------------------------------------------------------------------
+def is_a_uk_num(userNumber_attempt1):
+    if len(userNumber_attempt1) == 11 and (userNumber_attempt1[0]==0):
+        return True
+    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[4]== "-" or userNumber_attempt1[4]== " " ) and (userNumber_attempt1[8]=="-" or userNumber_attempt1[8]=="-"):
+        return True
+    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[3]== "-" or userNumber_attempt1[3]== " " ) and (userNumber_attempt1[9]=="-" or userNumber_attempt1[9]=="-"):
+        return True
+    elif (len(userNumber_attempt1) == 15) and (userNumber_attempt1[0]=="(") and  (userNumber_attempt1[4]==")" or userNumber_attempt1[5]==")" or userNumber_attempt1[6]==")" or userNumber_attempt1[9]==")"):
+        return True
+    else:
+        return False
+
 def phoneNumberCheck(balance):
     userNumber_attempt1 = input("please enter your phone number: ")
     valid = is_a_uk_num(userNumber_attempt1)
@@ -48,17 +72,7 @@ def phoneNumberCheck(balance):
         print("Incorrect phone number")
         return phoneNumberCheck(balance)
 
-def is_a_uk_num(userNumber_attempt1):
-    if len(userNumber_attempt1) == 11 and (userNumber_attempt1[0]==0):
-        return True
-    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[4]== "-" or userNumber_attempt1[4]== " " ) and (userNumber_attempt1[8]=="-" or userNumber_attempt1[8]=="-"):
-        return True
-    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[3]== "-" or userNumber_attempt1[3]== " " ) and (userNumber_attempt1[9]=="-" or userNumber_attempt1[9]=="-"):
-        return True
-    elif (len(userNumber_attempt1) == 15) and (userNumber_attempt1[0]=="(") and  (userNumber_attempt1[4]==")" or userNumber_attempt1[5]==")" or userNumber_attempt1[6]==")" or userNumber_attempt1[9]==")"):
-        return True
-    else:
-        return False
+
     
         
 def credit_requested_less_than_balance(balance):
