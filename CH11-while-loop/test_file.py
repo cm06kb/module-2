@@ -4,9 +4,9 @@ Created on Wed Dec 19 08:30:31 2018
 
 @author: Gebruiker
 """
-import ch_game_one_number_guess as game1
-import ch11_sum_of_dice_game as game2
-import CH11_weighted_dice as game3
+import ch11_game_1 as game1
+import ch11_game_2 as game2
+import ch11_game_3 as game3
 
 
 
