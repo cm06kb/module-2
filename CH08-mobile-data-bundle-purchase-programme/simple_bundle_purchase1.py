@@ -1,5 +1,5 @@
 
-
+import re
 
 def dataBundlePurchase(password, balance):
     """ 
@@ -8,7 +8,7 @@ def dataBundlePurchase(password, balance):
         Then calls check password function
     """
     user_attempts_at_password = 0
-    check_userpasswordpasswordCheck(password, balance, user_attempts_at_password )
+    return passwordCheck(password, balance, user_attempts_at_password )
       
 
 def passwordCheck(password, balance, user_attempts_at_password):
@@ -16,7 +16,7 @@ def passwordCheck(password, balance, user_attempts_at_password):
        takes a user input of password and compares password passed 
        from databundlePurchase function. If password correct calls transaction type
        function. If incorrect increments the user_attempts_at_password counter 
-   """
+    """
     userPassword_attempt = input("  Please input your password: ")
     if userPassword_attempt == password:
         return transactionType(balance)
@@ -52,12 +52,12 @@ def checkBalance(balance):
     """
     if balance>0:
         print("Your balance is £{}".format(balance))
-        return "Your balance is £{}".format(balance)
+        return do_you_want_to_top_up(balance)
     else:
         print("Insufficient credit, your balance is £{}".format(balance))
         return do_you_want_to_top_up(balance)
     
-def do_you_want_to_to_up(balance):
+def do_you_want_to_top_up(balance):
     """ 
         checks if user wants to top.
         If yes returns a function to top up balance.
@@ -98,9 +98,9 @@ def phoneNumberCheck(balance):
         If number is valid function called to check they have enough credit already
         to top up.
     """
-    userNumber_attempt1 = input("please enter your phone number: ")
+    userNumber_attempt1 = input("please enter a valid mobile number of the the format 000-000-0000: ")
     valid = is_a_uk_num(userNumber_attempt1)
-    if valid==True:
+    if valid:
         userNumber_attempt2 = input("please re-enter your phone number: ")
         if userNumber_attempt1 == userNumber_attempt2:
             return credit_requested_less_than_balance(balance)
@@ -114,21 +114,17 @@ def phoneNumberCheck(balance):
 
 
 def is_a_uk_num(userNumber_attempt1):
-    """Checks the number provided by user is a valid UK number
     """
-    if len(userNumber_attempt1) == 11 and (userNumber_attempt1[0]==0):
-        return True
-    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[4]== "-" or userNumber_attempt1[4]== " " ) and (userNumber_attempt1[8]=="-" or userNumber_attempt1[8]=="-"):
-        return True
-    elif (len(userNumber_attempt1)==13) and (userNumber_attempt1[3]== "-" or userNumber_attempt1[3]== " " ) and (userNumber_attempt1[9]=="-" or userNumber_attempt1[9]=="-"):
-        return True
-    elif (len(userNumber_attempt1) == 15) and (userNumber_attempt1[0]=="(") and  (userNumber_attempt1[4]==")" or userNumber_attempt1[5]==")" or userNumber_attempt1[6]==")" or userNumber_attempt1[9]==")"):
-        return True
-    else:
-        return False
+        Checks the number provided by user is a valid UK number.
+    """
+    pattern = re.compile("^[\dA-Z]{3}-[\dA-Z]{3}-[\dA-Z]{4}$", re.IGNORECASE)
+    return pattern.match(phone_nuber) is not None
 
        
 def credit_requested_less_than_balance(balance):
+    """
+        checks whether 
+    """
     credit_requested = int(input("please enter the amount of credit  you would like to purchase, this must be a mutiple of 5  :"))     
     if balance>=credit_requested:
         return credit_mutiple_of_5(balance, credit_requested)
