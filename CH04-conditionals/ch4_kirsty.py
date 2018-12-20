@@ -15,14 +15,16 @@ Created on Tue Dec  4 13:58:58 2018
 
 def are_they_a_teen():
     age = int(input("how old are you?"))
-    is_a_teen = age >= 13 and age <=19
-    print("Are they a teen: " + str(is_a_teen))
+    if age>10:
+        print("Too high!")
+    if age <=10:
+        print("Too low!")
 
 are_they_a_teen()
 
 
 #------------------------------------------------------------------------------
-#                     TASK 4 ELSE STATEMENTS
+#                     TASK 4 ElIF STATEMENTS
 #------------------------------------------------------------------------------
 
 def num_between_1_and_10():
@@ -35,9 +37,6 @@ def num_between_1_and_10():
         print("very good, you understood the instructions")
 
 num_between_1_and_10()
-
-
-
 
 #------------------------------------------------------------------------------
 #                     TASK 5 ELSE STATEMENTS

@@ -1,11 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec  5 10:07:55 2018
 
-@author: Gebruiker
-"""
+
+#------------------------------------------------------------------------------
+
+#                           CHAPTER 5 :OOP
+
+#------------------------------------------------------------------------------
+
+#------------------------TASK 1: USING CLASSES---------------------------------
+
 import sys
-#------------------------TASK 1------------------------------------------------
+
 class Customer(object): 
     def __init__(self, name, balance=0.0):       
         """Return a Customer object whose name is *name* and starting  
@@ -32,40 +36,33 @@ jason.withdraw(200)
 print(jason.balance)
 
 
-#class Animal(): 
-#    def eat(self): 
-#        print("yum") 
-#class Dog(Animal): 
-#    def bark(self):
-#        print("Woof!") 
-#    def detect(self):
-#        if self.barkNumber>=3:
-#            print('strenger coming!!!')
-#    def cat(self):
-#        if self.
-#class GreyHound(Dog):
-#    def hobby(self):
-#        print("racing")
-#class Cat(Animal): 
-#    def meow(self): 
-#        print("Meow")
-#Snoopy = Dog()
-#Snoopy.bark()
-#Snoopy.eat()
-#jack = GreyHound()
-#jack.hobby()
-#jack.eat()
-
-#-----------------------------TASK 2 and TASK 3--------------------------------
+#-----------------------------TASK 2 and TASK 3: USING INHERITANCE-------------
 class Robot():
+    """
+        superclass robot created, contains method move.
+        
+    """
     def move(self):
         print("...move move move...")
 
+
 class CleanRobot(Robot):
+    """
+        subclass  cleanrobot created, which inherits the method move from superclass robot.
+        contains own method clean.
+
+    """
     def clean(self):
         print("I vaccum dust")
 
+
+
 class CookRobot(Robot):
+     """
+        subclass  ccookrobot created, which inherits the method move from superclass robot.
+        contains own method cook.
+        
+    """
     def cook(self):
         print("I make rice")
 
@@ -109,7 +106,110 @@ dog007.bark()
 dog007.eat()
 dog007.detect()
 
-#----------------------------MY OWM EXAMPLE------------------------------------
+
+#-----------------------------TASK 4: USING ASSOCIATION------------------------
+
+class Animal():
+    """
+        animal class containing method eat.
+    
+    """
+#   def __init__(self, name, age):
+#       self.name = name
+#       self.age = age
+   def eat(self):
+         print('yum')
+
+class Dog(Animal):
+        """
+        subclass dog class of superclass Animal.
+        Inherits method eat.
+        contains method bark and detect.
+    
+        """
+    def bark(self):
+        print("Woof!") 
+        
+    def detect(self):
+        if self.barkNumber>=3:
+            print('stranger coming!!!')
+
+
+
+class Robot():
+    """
+        Class robot contains method move and move2.
+    
+    """
+    def move(self):
+        print("...move move move...")
+        
+    def move2(self):
+        print("..eer twist")
+
+class CleanRobot(Robot):
+    """
+        SubClass of robot, clean robot inherits method move and move2.
+        contains method vacuum.
+    
+    """
+    def clean(self):
+        print("I vaccum dust")
+
+
+class SuperRobot(): 
+     """
+        Class superrobot is associated with dog class and cleanrobot class.
+        superrobot can use methods in classes with which it is associated.
+        And use methods those associated classes inherit from.
+    """
+    def __init__(self, name, age): 
+        
+        self.name = name
+        self.age = age
+        self.ted = Robot() 
+        self.o2= Dog() 
+        self.o3 = CleanRobot() 
+    def show_name_and_age(self):
+        print(name)
+        print(age)
+ 
+    def what_should_i_do(self): 
+        ask_user = input("Hi, my name is {}, what would you like me to do?".format(self.name))
+        if ask_user=="clean":
+            return self.clean()  
+        else:
+            return self.playGame()
+    def playGame(self): 
+        print("alphago game") 
+        
+    def move(self): 
+        """
+            This function is inherited by clean robot from robot class and associated with superRobot class.
+        """
+        return self.ted.move() 
+    
+    def bark(self):
+        """
+            This function is associated with dog class.
+        """
+        return self.o2.bark()
+    
+    def clean(self):
+         """
+            This function is associated with cleanrobot class.
+        """
+        return self.o3.clean()
+
+name =  sys.argv[1]
+age = sys.argv[2]
+
+
+hal = SuperRobot(name, age)
+hal.show_name_and_age()
+hal.what_should_i_do()
+
+#----------------------------MY OWM EXAMPLE: USING INHERITANCE-----------------------------------
 
 class School_members():
     def __init__(self, name, gender, age=0):
@@ -168,78 +268,26 @@ print(mr_smith.response_to_how_many_sub_they_teach())
 mr_nye = Science_depart(name, gender, age, how_many_subject_they_teach, have_you_turned_gas_off)
 print(mr_nye.response_to_gas())
 
-
-#-----------------------------TASK 4-------------------------------------------
-"""using composition to link rather than inheritance"""
-
-class Animal():
-#   def __init__(self, name, age):
-#       self.name = name
-#       self.age = age
-   def eat(self):
-         print('yum')
-
-class Dog(Animal):
-    def bark(self):
-        print("Woof!") 
-        
-    def detect(self):
-        if self.barkNumber>=3:
-            print('stranger coming!!!')
-
-class Robot():
-    def move(self):
-        print("...move move move...")
-        
-    def move2(self):
-        print("..eer twist")
-
-class CleanRobot(Robot):
-    def clean(self):
-        print("I vaccum dust")
-
-
-class SuperRobot(): 
-    def __init__(self, name, age): 
-        
-        self.name = name
-        self.age = age
-        self.ted = Robot() 
-        self.o2= Dog() 
-        self.o3 = CleanRobot() 
-    def show_name_and_age(self):
-        print(name)
-        print(age)
- 
-    def what_should_i_do(self): 
-        ask_user = input("Hi, my name is {}, what would you like me to do?".format(self.name))
-        if ask_user=="clean":
-            return self.clean()  
-        else:
-            return self.playGame()
-    def playGame(self): 
-        print("alphago game") 
-        
-    def move(self): 
-        return self.ted.move() 
-    
-    def bark(self): 
-        return self.o2.bark()
-    
-    def clean(self): 
-        return self.o3.clean()
-
-name =  sys.argv[1]
-age = sys.argv[2]
-
-
-hal = SuperRobot(name, age)
-hal.show_name_and_age()
-hal.what_should_i_do()
-#bill.what_should_i_do()
-
-
-
-
-
-
+#class Animal(): 
+#    def eat(self): 
+#        print("yum") 
+#class Dog(Animal): 
+#    def bark(self):
+#        print("Woof!") 
+#    def detect(self):
+#        if self.barkNumber>=3:
+#            print('strenger coming!!!')
+#    def cat(self):
+#        if self.
+#class GreyHound(Dog):
+#    def hobby(self):
+#        print("racing")
+#class Cat(Animal): 
+#    def meow(self): 
+#        print("Meow")
+#Snoopy = Dog()
+#Snoopy.bark()
+#Snoopy.eat()
+#jack = GreyHound()
+#jack.hobby()
+#jack.eat()
