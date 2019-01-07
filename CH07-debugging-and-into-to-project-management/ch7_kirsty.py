@@ -31,7 +31,7 @@ print(type(userInput))
     2nd - runs code line by line
     3rd - step into a codeblock selected.
     4th - step out of a selected codeblock.
-    5th - ????
+    5th - Go to next break point.
     6th - ends debugging mode.
 """
 def simpleOperation(userInput):
