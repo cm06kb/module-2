@@ -4,6 +4,7 @@ Created on Fri Dec 21 13:54:42 2018
 
 @author: Gebruiker
 """
+import itertools 
 
 ##---TASK 7.2: USING CLASSES TO DEFINE ATTRIBUTES AND METHODS OF MOVING FIGURES----------------------------
 #from Shapes import *
@@ -178,20 +179,47 @@ class Moving_shape:
         self.figure.goto(x,y)
         
         
-    def moveTick(self): 
+    def moveTick(self, shapes): 
         """
             updates x and y coordinates and envokes goto method.
             
         """
-        ran_gen = r()      
-        self.x += self.dx
-        self.y += self.dy
+        ran_gen = r()
+        
+        
+        
+
+        for j in range(len(shapes)):
+            current = shapes[j]
+            for k in range(len(shapes)):
+                if current != shapes[k]:
+                    current.check_collide(shapes[k])
+        
         self.x = self.make_shape_bounce_x(ran_gen)
         self.y = self.make_shape_bounce_y(ran_gen)
+
         
+
         self.figure.goto(self.x,self.y)
-     
-    
+        
+    def check_collide(self, other):
+        self.x += self.dx
+        self.y += self.dy
+        diff_between_x = abs(self.x - other.x)  
+        diff_between_y = abs(self.y - other.y)  
+        
+        if (self.diameter>= diff_between_x) and     (self.diameter>= diff_between_y):
+            self.dx = -self.dx
+            self.x += self.dx
+            self.dy = -self.dy
+            self.y += self.dy
+
+            
+        
+            
+        
+        
+                
     def minx_and_maxx_calc(self, frame):
         """
             creates a minimum value for x and y to prevent shapes
@@ -242,9 +270,7 @@ class Moving_shape:
         else:
             return self.y
             
-        
-
-
+    
         
 class Square(Moving_shape):
     """
@@ -254,8 +280,9 @@ class Square(Moving_shape):
     """
     def __init__(self,frame,diameter):
         Moving_shape.__init__(self,frame,"square",diameter)
+        
 
-
+    
 class Diamond(Moving_shape):
     """
         class diamond is a subclass of Moving_shape.
@@ -263,8 +290,6 @@ class Diamond(Moving_shape):
         To ensure the diamond shape stays within the border, a sep  minx_maxx
         function is provided, which overrides the same function given in           
         parent class shapes.
-
-        
     """
     def __init__(self,frame,diameter):
         Moving_shape.__init__(self,frame,"diamond",diameter)
