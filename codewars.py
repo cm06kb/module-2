@@ -125,22 +125,28 @@
 #
 #print(order_weight("103 123 4444 99 2000"))
 
-def correct(string):
-    for n in string:
-        if (n == "0"):
-            string = string.replace("0", "O")
-        elif (n == "5"):
-            string = string.replace("5", "S")
-        elif (n == "1"):
-            string = string.replace("1", "I")
-    return string
+#def correct(string):
+#    for n in string:
+#        if (n == "0"):
+#            string = string.replace("0", "O")
+#        elif (n == "5"):
+#            string = string.replace("5", "S")
+#        elif (n == "1"):
+#            string = string.replace("1", "I")
+#    return string
+#
+#
+#print(correct("L0ND0N"))      
+        
+        
+        
+def find_short(s):
+    s = s.split(" ")    
+    x = (min((word for word in s if word), key=len))
+    return len(x)
 
+print(find_short("bitcoin take over the world maybe who knows perhaps"))
 
-print(correct("L0ND0N"))      
-        
-        
-        
-        
         
         
         

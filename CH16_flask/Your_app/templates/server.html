@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <title>Kirsty Bradley</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/index_style.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for("static", filename="css/index_style.css")}}">
+
+
+</head>
+<body>
+  <section id="section-1" class="main-page">
+    <img id="profile" src="static/images/kirsty_profile3.jpg" alt="A picture of Kirsty Bradley.">
+    <p> I'm Kirsty, a trainee developer.</p>
+    <p>Please take a look at my projects <a href="#section-2"  class="btn btn-danger btn-lg">Projects</a></p>
+    <footer id="footer-first-page">
+      <a href="https://www.freecodecamp.org/cm06kb" class="fab fa-free-code-camp"></a>
+      <a href="https://github.com/cm06kb?tab=repositories" class="fab fa-github"></a>
+    </footer>
+  </section>
+<section id="section-2">
+    <div class="container">
+      <div class="row">
+          <a href="#section-1" class="btn btn-danger btn-lg">Back</a>
+        </div>
+        </div>
+
+<div class="container">
+<h1>Portfolio</h1>
+   <h2> JavaScript, jQuery, HTML, CSS && Bootstrap </h2>
+   <ul>
+     <li><a href="data-plan-website/index.html">Data plan website</a></li>
+     <li><a href="school-report-generator/index.html">School reports template</a></li>
+     <li><a href="rock-paper-scissors/index.html">Rock paper scissors</a></li>
+     <li><a href="javascript-challenges/palindrome-checker.html">Palindrome checker</a></li>
+     <li><a href="javascript-challenges/roman-numeral-converter.html">Roman numeral converter</a></li>
+     <li><a href="tribute-pages/index.html">Tribute page</a></li>
+     <li><a href="javascript-challenges/caesar-cipheer.html">Caesar Cipher</a></li>
+   </ul>
+ </div>
+ <footer>
+   <a href="https://www.freecodecamp.org/cm06kb" class="fab fa-free-code-camp"></a>
+   <a href="https://github.com/cm06kb?tab=repositories" class="fab fa-github"></a>
+ </footer>
+
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% if name %}
+  <p>Hello{{name}}!</p>
+  {%else%}
+  <p>
+    Hello annoymous person!
+  </p>
+  {% endif %}
+  </body>
+</html>

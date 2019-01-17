@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Chela+One|Coda+Caption:800|Nanum+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="Contact_form_style.css">
+    <link rel="stylesheet" href="{{ url_for ("static", filename = "css/index_style.css")}}">
+  </head>
+  <body>
+    <div id="contact-form">
+    <form method="post" action="/confirmation">
+        <label for="name">name:</label>
+        <input type="text" id="name" name="name" required="required">
+        <label for="email">Email address:</label>
+        <input type="email" id="email" name="email" required="required">
+        <input type="submit" id="submit-button" name="submit" value="Submit" >
+    </form>
+    </div>
+  </body>
+</html>

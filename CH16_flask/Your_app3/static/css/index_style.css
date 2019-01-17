@@ -1,0 +1,50 @@
+h1 {
+	font-family: 'Coda Caption', sans-serif;
+	text-align: center;
+
+}
+
+form {
+  padding: 25px 0 25px 0;
+  width: 100%;
+  background-color: rgba(135,206,250,0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+button  {
+  color: white;
+	display: block;
+	margin: auto;
+  background-color: orange;
+  text-align: centre;
+  font-family: 'Coda Caption', cursive;
+  font-size: 20px;
+  border-radius:10px;
+}
+
+button:hover {
+  animation-name: background-color;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes background-color{
+  100% {
+      background-color: teal;
+  }
+}
+
+table {
+	font-family: 'Nanum Gothic', sans-serif;
+	margin: auto;
+	font-size: 15px;
+	text-align: right;
+}
+
+table .input{
+	border-color: orange;
+	border-width: medium;
+	border-radius: 10px;
+	padding: 10px;
+	float:left;
+}
